@@ -1,12 +1,23 @@
-import React from 'react';
-import Icon from '@mui/material/Icon';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import Menu from './components/Menu/Menu'
+import RegisterCardForm from './components/RegisterCardForm/RegisterCardForm'
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <Icon>star</Icon>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/RegisterCardForm">
+          <RegisterCardForm />
+        </Route>
+        <Route path="/Menu">
+          <Menu />          
+        </Route>
+        <Route path="/">
+          <Redirect to="/RegisterCardForm" />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
