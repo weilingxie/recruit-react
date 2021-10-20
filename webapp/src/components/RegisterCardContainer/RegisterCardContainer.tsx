@@ -14,7 +14,7 @@ const RegisterCardContainer: React.FC<RegisterCardContainerProps> =
 ({ componentInfoList, children }: RegisterCardContainerProps) => {
     const location = useLocation()
     const { Title, HeaderMenuIcon, ToPath } = componentInfoList.find(c => c.Path === location.pathname) || DefaultComponentInfo
-
+    
     return (
         <Container sx={{height: '100vh'}} data-testid='RegisterCardContainer'>
             <Header
