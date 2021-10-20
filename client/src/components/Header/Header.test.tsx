@@ -1,34 +1,39 @@
-import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import Header from './Header'
+import { createMemoryHistory } from 'history'
+import { Router } from 'react-router-dom'
 
 const title = 'TestTitle'
 const headerIcon = <div data-testid='testHeaderIcon'></div> 
+const toPath = '/'
 
 describe('Header Tests', () => {
     it('Should render title and icon', () => {
         const { getByTestId } = render(
+
             <Header 
                 title = {title}
                 headerIcon = {headerIcon}
-                onClickHeaderButton = {():void => {}}
+                toPath = {toPath}
             />
         )
         expect(screen.getByText(title)).toBeTruthy()
         expect(getByTestId('testHeaderIcon')).toBeTruthy()
     })
 
-    it('should call onClickHeaderButton when button is clicked', () => {
-        const onClickHeaderButton = jest.fn()
+    it('should be redirected to toPath when button is clicked', () => {        
+        const history = createMemoryHistory()
         const { getByRole } = render(
-            <Header 
-            title = {title}
-            headerIcon = {headerIcon}
-            onClickHeaderButton = {onClickHeaderButton}
-        />
+            <Router history={history}>
+                <Header 
+                title = {title}
+                headerIcon = {headerIcon}
+                toPath = {toPath}
+                />
+            </Router>        
         )
-        fireEvent.click(getByRole('button'))
+        fireEvent.click(getByRole('button'))        
     
-        expect(onClickHeaderButton).toBeCalled()
-    })
+        expect(window.location.pathname).toEqual(toPath)
+    })    
 })
