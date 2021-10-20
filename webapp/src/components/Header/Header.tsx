@@ -6,43 +6,41 @@ import IconButton from '@mui/material/IconButton'
 import { useHistory } from 'react-router-dom'
 
 type HeaderProps = {
-    title: string
-    toPath: string
-    headerIcon: React.ReactNode
+  title: string
+  toPath: string
+  headerIcon: React.ReactNode
 }
 
 const Header: React.FC<HeaderProps> = ({
-    title = 'Register Card Form',
-    toPath = '/',
-    headerIcon    
-} : HeaderProps) => {        
-    const history = useHistory()
-    const onClickHeaderButton = ():void => {
-        history.push(toPath)
-    }
+  title = 'Register Card Form',
+  toPath = '/',
+  headerIcon,
+}: HeaderProps) => {
+  const history = useHistory()
+  const onClickHeaderButton = (): void => {
+    history.push(toPath)
+  }
 
-    return (
+  return (
     <header data-testid="Header">
-        <AppBar position="static">
-            <Toolbar>
-                <IconButton
-                    color="inherit"
-                    onClick={onClickHeaderButton}
-                >
-                    { headerIcon }
-                </IconButton>
-                <Typography 
-                    variant="h5" 
-                    sx={{ 
-                        flexGrow: 1,
-                        textAlign: 'center' 
-                        }}>
-                    {title}
-                </Typography>
-            </Toolbar>            
-        </AppBar>        
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton color="inherit" onClick={onClickHeaderButton}>
+            {headerIcon}
+          </IconButton>
+          <Typography
+            variant="h5"
+            sx={{
+              flexGrow: 1,
+              textAlign: 'center',
+            }}
+          >
+            {title}
+          </Typography>
+        </Toolbar>
+      </AppBar>
     </header>
-    )
+  )
 }
 
 export default Header

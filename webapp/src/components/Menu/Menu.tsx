@@ -6,26 +6,27 @@ import Card from '@mui/material/Card'
 const MenuTextContent = 'This is menu content'
 
 const Menu: React.FC = () => {
-    return (
-    <div data-testid="Menu" style={{ height: '100%'}}>        
-        <Card
-            sx={{
-                padding: '10px'
-            }}
+  return (
+    <div data-testid="Menu" style={{ height: '100%' }}>
+      <Card
+        sx={{
+          padding: '10px',
+        }}
+      >
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          sx={{ height: '100%' }}
         >
-            <Grid container 
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-                sx={{ height: '100%' }}
-            >
-                <Typography variant="h5" sx={{ height: '100%', textAlign: 'center' }}>
-                    {MenuTextContent}
-                </Typography>
-            </Grid>
-        </Card>
+          <Typography variant="h5" sx={{ height: '100%', textAlign: 'center' }}>
+            {MenuTextContent}
+          </Typography>
+        </Grid>
+      </Card>
     </div>
-    )
+  )
 }
 
 export default Menu
