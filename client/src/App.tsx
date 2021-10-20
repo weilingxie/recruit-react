@@ -1,22 +1,15 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import Menu from './components/Menu/Menu'
-import RegisterCardForm from './components/RegisterCardForm/RegisterCardForm'
+import { BrowserRouter } from 'react-router-dom'
+import AppRouter from './AppRouter'
+import RegisterCardContainer from './components/RegisterCardContainer/RegisterCardContainer'
+import { ComponentInfoList } from './constans/ComponentInfoConstant'
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/RegisterCardForm">
-          <RegisterCardForm />
-        </Route>
-        <Route path="/Menu">
-          <Menu />          
-        </Route>
-        <Route path="/">
-          <Redirect to="/RegisterCardForm" />
-        </Route>
-      </Switch>
+      <RegisterCardContainer componentInfoList={ComponentInfoList}>        
+          <AppRouter />                    
+      </RegisterCardContainer>
     </BrowserRouter>
   );
 }
