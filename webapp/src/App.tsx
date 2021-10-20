@@ -7,11 +7,11 @@ import { ComponentInfoList } from './constans/ComponentInfoConstant'
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <RegisterCardContainer componentInfoList={ComponentInfoList}>        
-          <AppRouter />                    
+      <RegisterCardContainer componentInfoList={ComponentInfoList}>
+        <AppRouter />
       </RegisterCardContainer>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
