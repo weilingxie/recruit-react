@@ -10,7 +10,6 @@ const toPath = '/'
 describe('Header Tests', () => {
     it('Should render title and icon', () => {
         const { getByTestId } = render(
-
             <Header 
                 title = {title}
                 headerIcon = {headerIcon}
