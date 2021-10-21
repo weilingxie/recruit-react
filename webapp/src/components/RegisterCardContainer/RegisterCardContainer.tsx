@@ -1,7 +1,6 @@
 import React from 'react'
 import Header from '../Header/Header'
 import { useLocation } from 'react-router-dom'
-import { DefaultComponentInfo } from '../../constans/ComponentInfoConstant'
 import { ComponentInfo } from '../../types/ComponentInfo'
 import { Container } from '@mui/material'
 
