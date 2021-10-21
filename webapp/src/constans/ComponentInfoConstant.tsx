@@ -8,6 +8,7 @@ const ComponentInfoList: ComponentInfo[] = [
     Title: 'Menu',
     HeaderMenuIcon: <MenuIcon fontSize="large" />,
     ToPath: '/RegisterCardForm',
+    Default: true,
   },
   {
     Path: '/RegisterCardForm',
@@ -17,11 +18,4 @@ const ComponentInfoList: ComponentInfo[] = [
   },
 ]
 
-const DefaultComponentInfo: ComponentInfo = {
-  Path: '/RegisterCardForm',
-  Title: 'Register card form',
-  HeaderMenuIcon: <ArrowBack fontSize="large" />,
-  ToPath: '/Menu',
-}
-
-export { ComponentInfoList, DefaultComponentInfo }
+export { ComponentInfoList }

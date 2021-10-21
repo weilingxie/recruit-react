@@ -3,4 +3,5 @@ export interface ComponentInfo {
   Title: string
   HeaderMenuIcon: React.ReactNode
   ToPath: string
+  Default?: boolean
 }
