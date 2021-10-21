@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import { useHistory } from 'react-router-dom'
 
-type HeaderProps = {
+export type HeaderProps = {
   title: string
   toPath: string
   headerIcon: React.ReactNode

@@ -1,4 +1,4 @@
-export interface ComponentInfo {
+export default interface ComponentInfo {
   Path: string
   Title: string
   HeaderMenuIcon: React.ReactNode
