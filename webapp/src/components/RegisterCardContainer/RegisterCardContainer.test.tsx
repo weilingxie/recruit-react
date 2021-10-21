@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import RegisterCardContainer from './RegisterCardContainer'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory, History } from 'history'
-import { ComponentInfoList } from '../../constans/ComponentInfoConstant'
+import ComponentInfoList from '../../constants/ComponentInfoConstant'
 
 const history = createMemoryHistory()
 const childText = 'TestChild'

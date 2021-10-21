@@ -1,8 +1,7 @@
 import React from 'react'
 import Header from '../Header/Header'
 import { useLocation } from 'react-router-dom'
-import { ComponentInfo } from '../../types/ComponentInfo'
-import { Container } from '@mui/material'
+import ComponentInfo from '../../types/ComponentInfo'
 
 type RegisterCardContainerProps = {
   componentInfoList: ComponentInfo[]
@@ -23,10 +22,10 @@ const RegisterCardContainer: React.FC<RegisterCardContainerProps> = ({
   )
 
   return (
-    <Container sx={{ height: '100vh' }} data-testid="RegisterCardContainer">
+    <>
       <Header title={Title} headerIcon={HeaderMenuIcon} toPath={ToPath} />
       {children}
-    </Container>
+    </>
   )
 }
 

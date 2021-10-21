@@ -1,6 +1,6 @@
 import ArrowBack from '@mui/icons-material/ArrowBack'
 import MenuIcon from '@mui/icons-material/Menu'
-import { ComponentInfo } from '../types/ComponentInfo'
+import ComponentInfo from '../types/ComponentInfo'
 
 const ComponentInfoList: ComponentInfo[] = [
   {
@@ -18,4 +18,4 @@ const ComponentInfoList: ComponentInfo[] = [
   },
 ]
 
-export { ComponentInfoList }
+export default ComponentInfoList
