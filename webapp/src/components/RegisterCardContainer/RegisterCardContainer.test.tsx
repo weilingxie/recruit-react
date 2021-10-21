@@ -1,15 +1,26 @@
+import React from 'react'
 import { render } from '@testing-library/react'
 import RegisterCardContainer from './RegisterCardContainer'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory, History } from 'history'
 import { ComponentInfoList } from '../../constans/ComponentInfoConstant'
 
+const history = createMemoryHistory()
+const childText = 'TestChild'
+const Child: React.FC = () => {
+  return <div>{childText}</div>
+}
+
 describe('RegisterCardContainer Tests', () => {
-  const history = createMemoryHistory()
-  const renderRegisterCardContainer = (history: History) => {
+  const renderRegisterCardContainer = (
+    history: History,
+    children?: React.ReactNode
+  ) => {
     return render(
       <Router history={history}>
-        <RegisterCardContainer componentInfoList={ComponentInfoList} />
+        <RegisterCardContainer componentInfoList={ComponentInfoList}>
+          {children}
+        </RegisterCardContainer>
       </Router>
     )
   }
@@ -20,9 +31,13 @@ describe('RegisterCardContainer Tests', () => {
   })
 
   it('should render title of componentInfo', () => {
-    const history = createMemoryHistory()
     history.push(ComponentInfoList[0].Path)
     const { getByText } = renderRegisterCardContainer(history)
     expect(getByText(ComponentInfoList[0].Title)).toBeTruthy()
+  })
+
+  it('should render its child', () => {
+    const { getByText } = renderRegisterCardContainer(history, <Child />)
+    expect(getByText(childText)).toBeTruthy()
   })
 })
