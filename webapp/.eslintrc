@@ -9,8 +9,8 @@
     "prettier"
   ],
   "rules": {
-    "no-console": 1, // Means warning
+    "no-console": 1,
     "prefer-const": 1,
-    "prettier/prettier": 1 // Means error
+    "prettier/prettier": [1, { "endOfLine": "auto" }]
   }
 }
