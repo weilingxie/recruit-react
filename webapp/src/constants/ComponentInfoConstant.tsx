@@ -1,8 +1,8 @@
 import ArrowBack from '@mui/icons-material/ArrowBack'
 import MenuIcon from '@mui/icons-material/Menu'
-import ComponentInfo from '../types/ComponentInfo'
+import { IComponentInfo } from '../types/Types'
 
-const ComponentInfoList: ComponentInfo[] = [
+const ComponentInfoList: IComponentInfo[] = [
   {
     Path: '/Menu',
     Title: 'Menu',

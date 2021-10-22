@@ -1,10 +1,10 @@
 import React from 'react'
 import Header from '../Header/Header'
 import { useLocation } from 'react-router-dom'
-import ComponentInfo from '../../types/ComponentInfo'
+import { IComponentInfo } from '../../types/Types'
 
 type RegisterCardContainerProps = {
-  componentInfoList: ComponentInfo[]
+  componentInfoList: IComponentInfo[]
   children?: React.ReactNode
 }
 
@@ -14,9 +14,9 @@ const RegisterCardContainer: React.FC<RegisterCardContainerProps> = ({
 }: RegisterCardContainerProps) => {
   const location = useLocation()
   const getComponentInfoByPath = (
-    componentInfoList: ComponentInfo[],
+    componentInfoList: IComponentInfo[],
     path: string
-  ): ComponentInfo =>
+  ): IComponentInfo =>
     componentInfoList.filter((c) => c.Path === path)[0] ||
     componentInfoList.filter((c) => c.Default === true)[0]
 
