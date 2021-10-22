@@ -61,7 +61,12 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
           />
         </Grid>
         <Grid item sm={12} lg={12}>
-          <Button variant="contained" color="success" type="submit">
+          <Button
+            variant="contained"
+            color="success"
+            type="submit"
+            disabled={getErrors().length > 0}
+          >
             Submit
           </Button>
         </Grid>
