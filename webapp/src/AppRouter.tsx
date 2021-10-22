@@ -5,7 +5,7 @@ import RegisterCardForm from './components/RegisterCardForm/RegisterCardForm'
 
 const AppRouter: React.FC = () => {
   return (
-    <Container sx={{ height: '100vh' }} data-testid="RegisterCardContainer">
+    <Container sx={{ paddingTop: '30px' }} data-testid="RegisterCardContainer">
       <Switch>
         <Route path="/RegisterCardForm" exact>
           <RegisterCardForm />
