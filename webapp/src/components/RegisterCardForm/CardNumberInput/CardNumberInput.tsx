@@ -21,7 +21,7 @@ const CardNumberInput: React.FC<CardNumberInputProps> = ({
       fullWidth
       data-testid="CardNumber"
       label="Credit Card Number"
-      name="CardNumber"
+      name="cardNumber"
       error={error}
       helperText={helperText}
       value={cardNumber}
