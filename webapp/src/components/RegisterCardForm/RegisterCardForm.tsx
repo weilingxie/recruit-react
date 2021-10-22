@@ -1,28 +1,31 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import CardNumberInput from './CardNumberInput/CardNumberInput'
+import useCreditCardForm from './Hook/useCreditCardForm'
+import ValidateCreditCard from './ValidateCreditCard'
+import { ICreditCard } from '../../types/Types'
+
+const callback = (creditCard: ICreditCard): void => {
+  console.log(creditCard)
+  alert(JSON.stringify(creditCard))
+}
 
 const RegisterCardForm: React.FC = () => {
-  const [cardNumber, setCardNumber] = useState('')
-
-  const submit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault()
-  }
-
-  const onCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setCardNumber(e.target.value)
-  }
+  const { handleChange, handleSubmit, creditCard, error } = useCreditCardForm(
+    callback,
+    ValidateCreditCard
+  )
 
   return (
-    <form data-testid="RegisterCardForm" onSubmit={submit}>
+    <form data-testid="RegisterCardForm" onSubmit={handleSubmit}>
       <Grid container item sm={12} md={10} lg={6} spacing={2}>
         <Grid item>
           <CardNumberInput
-            onCardNumberChange={onCardNumberChange}
-            cardNumber={cardNumber}
-            error={false}
-            helperText=""
+            onCardNumberChange={handleChange}
+            cardNumber={creditCard.cardNumber}
+            error={error.cardNumber !== undefined}
+            helperText={error.cardNumber}
           />
         </Grid>
         <Grid item sm={12} lg={12}>
