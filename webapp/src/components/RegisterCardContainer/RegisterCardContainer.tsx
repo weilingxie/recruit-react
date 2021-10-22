@@ -13,11 +13,15 @@ const RegisterCardContainer: React.FC<RegisterCardContainerProps> = ({
   children,
 }: RegisterCardContainerProps) => {
   const location = useLocation()
-  const getComponentInfoByPath = (path: string): ComponentInfo =>
+  const getComponentInfoByPath = (
+    componentInfoList: ComponentInfo[],
+    path: string
+  ): ComponentInfo =>
     componentInfoList.filter((c) => c.Path === path)[0] ||
     componentInfoList.filter((c) => c.Default === true)[0]
 
   const { Title, HeaderMenuIcon, ToPath } = getComponentInfoByPath(
+    componentInfoList,
     location.pathname
   )
 
