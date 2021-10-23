@@ -4,7 +4,7 @@ const ValidateCardNumber = (cardNumber: string): string =>
 const ValidateExpiryDate = (expiryDate: string): string => {
   const regex = /^(0[1-9]|1[0-2])([0-9]{2})$/
   return expiryDate.length !== 4 || !expiryDate.match(regex)
-    ? 'Expiry date number is invalid'
+    ? 'Expiry date is invalid'
     : ''
 }
 

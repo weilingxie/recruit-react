@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react'
+import { render, fireEvent, screen, waitFor } from '@testing-library/react'
 import { ICreditCard } from '../../types/Types'
 import RegisterCardForm from './RegisterCardForm'
 
@@ -9,10 +9,10 @@ const onSubmitCallback = (creditCard: ICreditCard): Promise<void> => {
 }
 
 const invalidCardNumber = '123456'
-const invalidExpireDate = '9921'
+const invalidExpiryDate = '9921'
 const invalidCvc = '12'
 const validCardNumber = '1234567890123456'
-const validExpireDate = '1221'
+const validExpiryDate = '1221'
 const validCvc = '123'
 
 describe('RegisterCardForm Tests', () => {
@@ -21,7 +21,7 @@ describe('RegisterCardForm Tests', () => {
       <RegisterCardForm onSubmitCallback={onSubmitCallback} />
     )
     expect(getByTestId('CardNumberInput')).toBeTruthy()
-    expect(getByTestId('ExpireDateInput')).toBeTruthy()
+    expect(getByTestId('ExpiryDateInput')).toBeTruthy()
     expect(getByTestId('CvcInput')).toBeTruthy()
   })
 
@@ -36,13 +36,13 @@ describe('RegisterCardForm Tests', () => {
     expect(cardNumberFormat.value).toBe('1234 5678 9012 3456')
   })
 
-  it('Should show expire date with correct backslash', () => {
+  it('Should show expiry date with correct backslash', () => {
     const { getByTestId } = render(
       <RegisterCardForm onSubmitCallback={onSubmitCallback} />
     )
-    const expireDateFormat = getByTestId('ExpireDateFormat') as HTMLInputElement
-    fireEvent.change(expireDateFormat, { target: { value: '1221' } })
-    expect(expireDateFormat.value).toBe('12/21')
+    const expiryDateFormat = getByTestId('ExpiryDateFormat') as HTMLInputElement
+    fireEvent.change(expiryDateFormat, { target: { value: '1221' } })
+    expect(expiryDateFormat.value).toBe('12/21')
   })
 
   it('Should show error when provides invalid card number', () => {
@@ -51,16 +51,16 @@ describe('RegisterCardForm Tests', () => {
     )
     const cardNumberFormat = getByTestId('CardNumberFormat') as HTMLInputElement
     fireEvent.change(cardNumberFormat, { target: { value: invalidCardNumber } })
-    expect(screen.findByText('Credit card number is invalid')).toBeTruthy()
+    expect(screen.getByText('Credit card number is invalid')).toBeTruthy()
   })
 
-  it('Should show error when provides invalid expire date', () => {
+  it('Should show error when provides invalid expiry date', () => {
     const { getByTestId } = render(
       <RegisterCardForm onSubmitCallback={onSubmitCallback} />
     )
-    const expireDateFormat = getByTestId('ExpireDateFormat') as HTMLInputElement
-    fireEvent.change(expireDateFormat, { target: { value: invalidExpireDate } })
-    expect(screen.findByText('Expire date is invalid')).toBeTruthy()
+    const expiryDateFormat = getByTestId('ExpiryDateFormat') as HTMLInputElement
+    fireEvent.change(expiryDateFormat, { target: { value: invalidExpiryDate } })
+    expect(screen.getByText('Expiry date is invalid')).toBeTruthy()
   })
 
   it('Should show error when provides invalid cvc', () => {
@@ -69,7 +69,7 @@ describe('RegisterCardForm Tests', () => {
     )
     const cvcFormat = getByTestId('CvcFormat') as HTMLInputElement
     fireEvent.change(cvcFormat, { target: { value: invalidCvc } })
-    expect(screen.findByText('Cvc is invalid')).toBeTruthy()
+    expect(screen.getByText('Cvc is invalid')).toBeTruthy()
   })
 
   it('Should disable submit button when there is any error', () => {
@@ -87,10 +87,10 @@ describe('RegisterCardForm Tests', () => {
       <RegisterCardForm onSubmitCallback={onSubmitCallback} />
     )
     const cardNumberFormat = getByTestId('CardNumberFormat') as HTMLInputElement
-    const expireDateFormat = getByTestId('ExpireDateFormat') as HTMLInputElement
+    const expiryDateFormat = getByTestId('ExpiryDateFormat') as HTMLInputElement
     const cvcFormat = getByTestId('CvcFormat') as HTMLInputElement
     fireEvent.change(cardNumberFormat, { target: { value: validCardNumber } })
-    fireEvent.change(expireDateFormat, { target: { value: validExpireDate } })
+    fireEvent.change(expiryDateFormat, { target: { value: validExpiryDate } })
     fireEvent.change(cvcFormat, { target: { value: validCvc } })
     const submitButton = getByRole('button')
     expect(submitButton).toBeEnabled
