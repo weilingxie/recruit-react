@@ -17,8 +17,7 @@ const useCreditCardInput = (validate: Validate): Return => {
   }, [value])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const { name, value } = event.target
-    console.log(`Name:${name}  Value:${value}`)
+    const { value } = event.target
     setValue(value)
   }
 
