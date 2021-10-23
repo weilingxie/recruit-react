@@ -25,8 +25,8 @@ describe('useCreditCardInput Tests', () => {
     const { result } = renderHook(() => useCreditCardInput(validateNoError))
     const event = {
       target: {
-        value: toValue
-      }
+        value: toValue,
+      },
     } as React.ChangeEvent<HTMLInputElement>
 
     act(() => {
@@ -42,8 +42,8 @@ describe('useCreditCardInput Tests', () => {
     )
     const event = {
       target: {
-        value: invalidValue
-      }
+        value: invalidValue,
+      },
     } as React.ChangeEvent<HTMLInputElement>
 
     expect(result.current.error).toBe('')
