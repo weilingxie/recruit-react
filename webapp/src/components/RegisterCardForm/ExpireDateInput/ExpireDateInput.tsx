@@ -27,6 +27,7 @@ const ExpireDateInput: React.FC<ExpireDateInputProps> = ({
       value={expireDate}
       onChange={onExpireDateChange}
       InputProps={{
+        style: { fontSize: '1.2em' },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         inputComponent: ExpireDateFormat as any,
       }}
