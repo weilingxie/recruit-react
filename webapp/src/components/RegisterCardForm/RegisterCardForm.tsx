@@ -48,8 +48,8 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
     cardNumberError &&
       err.push({ name: 'cardNumber', errorMessage: cardNumberError })
     expireDateError &&
-      err.push({ name: 'expireDate', errorMessage: cardNumberError })
-    cvcError && err.push({ name: 'cvc', errorMessage: cardNumberError })
+      err.push({ name: 'expireDate', errorMessage: expireDateError })
+    cvcError && err.push({ name: 'cvc', errorMessage: cvcError })
     return err
   }
 
@@ -110,7 +110,7 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
                   }
                 />
               </Grid>
-              <Grid item xs={5} sm={5} md={5} lg={5} xl={5}>
+              <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                 <CvcInput
                   onCvcChange={onCvcChange}
                   cvc={cvc}
