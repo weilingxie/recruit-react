@@ -19,7 +19,7 @@ const ExpireDateInput: React.FC<ExpireDateInputProps> = ({
     <TextField
       required
       fullWidth
-      data-testid="ExpireDate"
+      data-testid="ExpireDateInput"
       label="Expire Date"
       name="expireDate"
       error={error}

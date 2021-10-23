@@ -19,7 +19,7 @@ const CvcInput: React.FC<CvcInputProps> = ({
     <TextField
       required
       fullWidth
-      data-testid="Cvc"
+      data-testid="CvcInput"
       label="cvc"
       name="cvc"
       error={error}

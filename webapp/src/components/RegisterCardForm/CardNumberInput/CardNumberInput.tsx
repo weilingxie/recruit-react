@@ -19,7 +19,7 @@ const CardNumberInput: React.FC<CardNumberInputProps> = ({
     <TextField
       required
       fullWidth
-      data-testid="CardNumber"
+      data-testid="CardNumberInput"
       label="Credit Card Number"
       name="cardNumber"
       error={error}
