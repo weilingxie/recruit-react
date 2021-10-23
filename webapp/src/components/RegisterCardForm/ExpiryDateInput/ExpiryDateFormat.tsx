@@ -1,19 +1,19 @@
 import React from 'react'
 import NumberFormat from 'react-number-format'
 
-type ExpireDateFormatProps = {
+type ExpiryDateFormatProps = {
   onChange: (event: { target: { name: string; value: string } }) => void
   name: string
 }
 
-const ExpireDateFormat = React.forwardRef<NumberFormat, ExpireDateFormatProps>(
+const ExpiryDateFormat = React.forwardRef<NumberFormat, ExpiryDateFormatProps>(
   function NumberFormatCustom(props, ref) {
     const { onChange, ...other } = props
 
     return (
       <NumberFormat
         {...other}
-        data-testid="ExpireDateFormat"
+        data-testid="ExpiryDateFormat"
         getInputRef={ref}
         onValueChange={(values) => {
           onChange({
@@ -31,4 +31,4 @@ const ExpireDateFormat = React.forwardRef<NumberFormat, ExpireDateFormatProps>(
   }
 )
 
-export default ExpireDateFormat
+export default ExpiryDateFormat

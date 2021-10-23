@@ -1,6 +1,6 @@
 export interface ICreditCard {
   cardNumber: string
-  expireDate: string
+  expiryDate: string
   cvc: string
 }
 
