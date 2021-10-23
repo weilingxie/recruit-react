@@ -27,6 +27,7 @@ const CvcInput: React.FC<CvcInputProps> = ({
       value={cvc}
       onChange={onCvcChange}
       InputProps={{
+        style: { fontSize: '1.2em' },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         inputComponent: CvcFormat as any,
       }}

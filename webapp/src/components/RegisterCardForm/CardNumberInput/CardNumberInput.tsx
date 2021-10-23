@@ -27,6 +27,7 @@ const CardNumberInput: React.FC<CardNumberInputProps> = ({
       value={cardNumber}
       onChange={onCardNumberChange}
       InputProps={{
+        style: { fontSize: '1.2em' },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         inputComponent: CardNumberFormat as any,
       }}
