@@ -1,5 +1,7 @@
 export interface ICreditCard {
   cardNumber: string
+  expireDate: string
+  cvc: string
 }
 
 export interface IComponentInfo {

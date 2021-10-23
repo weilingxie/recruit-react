@@ -3,8 +3,13 @@ import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import CardNumberInput from './CardNumberInput/CardNumberInput'
 import ExpireDateInput from './ExpireDateInput/ExpireDateInput'
+import CvcInput from './CvcInput/CvcInput'
 import useCreditCardInput from '../../hooks/useCreditCardInput'
-import { ValidateCardNumber, ValidateExpireDate } from './ValidateCreditCard'
+import {
+  ValidateCardNumber,
+  ValidateExpireDate,
+  ValidateCvc,
+} from './ValidateCreditCard'
 import { ICreditCard } from '../../types/Types'
 
 type RegisterCardFormProps = {
@@ -31,12 +36,19 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
     error: expireDateError,
   } = useCreditCardInput(ValidateExpireDate)
 
+  const {
+    handleChange: onCvcChange,
+    value: cvc,
+    error: cvcError,
+  } = useCreditCardInput(ValidateCvc)
+
   const getErrors = (): ErrorType[] => {
     const err: ErrorType[] = []
     cardNumberError &&
       err.push({ name: 'cardNumber', errorMessage: cardNumberError })
     expireDateError &&
       err.push({ name: 'expireDate', errorMessage: cardNumberError })
+    cvcError && err.push({ name: 'cvc', errorMessage: cardNumberError })
     return err
   }
 
@@ -49,6 +61,8 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
     }
     const creditCard: ICreditCard = {
       cardNumber,
+      expireDate,
+      cvc,
     }
 
     return await onSubmitCallback(creditCard)
@@ -76,6 +90,16 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
             helperText={
               getErrors().find((err) => err.name === 'expireDate')
                 ?.errorMessage || ''
+            }
+          />
+        </Grid>
+        <Grid item>
+          <CvcInput
+            onCvcChange={onCvcChange}
+            cvc={cvc}
+            error={getErrors().some((err) => err.name === 'cvc')}
+            helperText={
+              getErrors().find((err) => err.name === 'cvc')?.errorMessage || ''
             }
           />
         </Grid>

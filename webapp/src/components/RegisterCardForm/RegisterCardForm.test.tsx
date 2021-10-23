@@ -9,12 +9,13 @@ const onSubmitCallback = (creditCard: ICreditCard): Promise<void> => {
 }
 
 describe('RegisterCardForm Tests', () => {
-  it('Should render Card Number and ExpireDate', () => {
+  it('Should render all credit card fields', () => {
     const { getByTestId } = render(
       <RegisterCardForm onSubmitCallback={onSubmitCallback} />
     )
     expect(getByTestId('CardNumber')).toBeTruthy()
     expect(getByTestId('ExpireDate')).toBeTruthy()
+    expect(getByTestId('Cvc')).toBeTruthy()
   })
 
   it('Should show card number with correct space', () => {
