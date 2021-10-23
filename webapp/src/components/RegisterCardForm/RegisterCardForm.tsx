@@ -3,12 +3,12 @@ import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import { Typography } from '@mui/material'
 import CardNumberInput from './CardNumberInput/CardNumberInput'
-import ExpireDateInput from './ExpireDateInput/ExpireDateInput'
+import ExpiryDateInput from './ExpiryDateInput/ExpiryDateInput'
 import CvcInput from './CvcInput/CvcInput'
 import useCreditCardInput from '../../hooks/useCreditCardInput'
 import {
   ValidateCardNumber,
-  ValidateExpireDate,
+  ValidateExpiryDate,
   ValidateCvc,
 } from './ValidateCreditCard'
 import { ICreditCard } from '../../types/Types'
@@ -32,10 +32,10 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
   } = useCreditCardInput(ValidateCardNumber)
 
   const {
-    handleChange: onExpireDateChange,
-    value: expireDate,
-    error: expireDateError,
-  } = useCreditCardInput(ValidateExpireDate)
+    handleChange: onExpiryDateChange,
+    value: expiryDate,
+    error: expiryDateError,
+  } = useCreditCardInput(ValidateExpiryDate)
 
   const {
     handleChange: onCvcChange,
@@ -47,8 +47,8 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
     const err: ErrorType[] = []
     cardNumberError &&
       err.push({ name: 'cardNumber', errorMessage: cardNumberError })
-    expireDateError &&
-      err.push({ name: 'expireDate', errorMessage: expireDateError })
+    expiryDateError &&
+      err.push({ name: 'expiryDate', errorMessage: expiryDateError })
     cvcError && err.push({ name: 'cvc', errorMessage: cvcError })
     return err
   }
@@ -62,7 +62,7 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
     }
     const creditCard: ICreditCard = {
       cardNumber,
-      expireDate,
+      expiryDate,
       cvc,
     }
 
@@ -100,12 +100,12 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
               spacing={2}
             >
               <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                <ExpireDateInput
-                  onExpireDateChange={onExpireDateChange}
-                  expireDate={expireDate}
-                  error={getErrors().some((err) => err.name === 'expireDate')}
+                <ExpiryDateInput
+                  onExpiryDateChange={onExpiryDateChange}
+                  expiryDate={expiryDate}
+                  error={getErrors().some((err) => err.name === 'expiryDate')}
                   helperText={
-                    getErrors().find((err) => err.name === 'expireDate')
+                    getErrors().find((err) => err.name === 'expiryDate')
                       ?.errorMessage || ''
                   }
                 />
