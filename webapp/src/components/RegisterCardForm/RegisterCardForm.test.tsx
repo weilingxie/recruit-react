@@ -9,11 +9,12 @@ const onSubmitCallback = (creditCard: ICreditCard): Promise<void> => {
 }
 
 describe('RegisterCardForm Tests', () => {
-  it('Should render Card Number', () => {
+  it('Should render Card Number and ExpireDate', () => {
     const { getByTestId } = render(
       <RegisterCardForm onSubmitCallback={onSubmitCallback} />
     )
     expect(getByTestId('CardNumber')).toBeTruthy()
+    expect(getByTestId('ExpireDate')).toBeTruthy()
   })
 
   it('Should show card number with correct space', () => {
@@ -23,5 +24,14 @@ describe('RegisterCardForm Tests', () => {
     const cardNumberInput = getByTestId('CardNumberFormat') as HTMLInputElement
     fireEvent.change(cardNumberInput, { target: { value: '1234567890123456' } })
     expect(cardNumberInput.value).toBe('1234 5678 9012 3456')
+  })
+
+  it('Should show expire date with correct backslash', () => {
+    const { getByTestId } = render(
+      <RegisterCardForm onSubmitCallback={onSubmitCallback} />
+    )
+    const expireDateInput = getByTestId('ExpireDateFormat') as HTMLInputElement
+    fireEvent.change(expireDateInput, { target: { value: '1221' } })
+    expect(expireDateInput.value).toBe('12/21')
   })
 })

@@ -2,33 +2,41 @@ import React from 'react'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import CardNumberInput from './CardNumberInput/CardNumberInput'
+import ExpireDateInput from './ExpireDateInput/ExpireDateInput'
 import useCreditCardInput from '../../hooks/useCreditCardInput'
-import { ValidateCardNumber } from './ValidateCreditCard'
+import { ValidateCardNumber, ValidateExpireDate } from './ValidateCreditCard'
 import { ICreditCard } from '../../types/Types'
 
 type RegisterCardFormProps = {
   onSubmitCallback: (creditCard: ICreditCard) => Promise<void>
 }
 
+type ErrorType = {
+  name: string
+  errorMessage: string
+}
+
 const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
   onSubmitCallback,
 }: RegisterCardFormProps) => {
   const {
-    handleChange,
+    handleChange: onCardNumberChange,
     value: cardNumber,
     error: cardNumberError,
   } = useCreditCardInput(ValidateCardNumber)
 
-  type ErrorType = {
-    name: string
-    errorMessage: string
-  }
+  const {
+    handleChange: onExpireDateChange,
+    value: expireDate,
+    error: expireDateError,
+  } = useCreditCardInput(ValidateExpireDate)
 
   const getErrors = (): ErrorType[] => {
     const err: ErrorType[] = []
     cardNumberError &&
       err.push({ name: 'cardNumber', errorMessage: cardNumberError })
-
+    expireDateError &&
+      err.push({ name: 'expireDate', errorMessage: cardNumberError })
     return err
   }
 
@@ -51,11 +59,22 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
       <Grid container item sm={12} md={10} lg={6} spacing={2}>
         <Grid item>
           <CardNumberInput
-            onCardNumberChange={handleChange}
+            onCardNumberChange={onCardNumberChange}
             cardNumber={cardNumber}
             error={getErrors().some((err) => err.name === 'cardNumber')}
             helperText={
               getErrors().find((err) => err.name === 'cardNumber')
+                ?.errorMessage || ''
+            }
+          />
+        </Grid>
+        <Grid item>
+          <ExpireDateInput
+            onExpireDateChange={onExpireDateChange}
+            expireDate={expireDate}
+            error={getErrors().some((err) => err.name === 'expireDate')}
+            helperText={
+              getErrors().find((err) => err.name === 'expireDate')
                 ?.errorMessage || ''
             }
           />
