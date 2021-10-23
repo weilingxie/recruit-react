@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import CardNumberInput from './CardNumberInput/CardNumberInput'
-import useCreditCardInput from './Hook/useCreditCardInput'
+import useCreditCardInput from '../../hooks/useCreditCardInput'
 import { ValidateCardNumber } from './ValidateCreditCard'
 import { ICreditCard } from '../../types/Types'
 
