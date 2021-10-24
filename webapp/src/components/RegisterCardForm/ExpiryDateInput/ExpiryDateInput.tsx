@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { TextField } from '@mui/material'
 import ExpiryDateFormat from './ExpiryDateFormat'
+import StyleContext from '../../../contexts/StyleContext'
+import { IStyle } from '../../../types/Types'
 
 type ExpiryDateInputProps = {
   error: boolean
@@ -15,6 +17,7 @@ const ExpiryDateInput: React.FC<ExpiryDateInputProps> = ({
   expiryDate,
   onExpiryDateChange,
 }: ExpiryDateInputProps) => {
+  const { input } = useContext<IStyle>(StyleContext)
   return (
     <TextField
       required
@@ -27,11 +30,11 @@ const ExpiryDateInput: React.FC<ExpiryDateInputProps> = ({
       value={expiryDate}
       onChange={onExpiryDateChange}
       InputProps={{
-        style: { fontSize: '1.2em' },
+        style: { fontSize: input.fontSize },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         inputComponent: ExpiryDateFormat as any,
       }}
-      variant="filled"
+      variant={input.variant}
     />
   )
 }
