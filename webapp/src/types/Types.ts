@@ -11,3 +11,8 @@ export interface IComponentInfo {
   ToPath: string
   Default?: boolean
 }
+
+export interface IUser {
+  firstName: string
+  lastName: string
+}

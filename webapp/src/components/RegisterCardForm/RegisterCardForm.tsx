@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import { Typography } from '@mui/material'
@@ -11,7 +11,8 @@ import {
   ValidateExpiryDate,
   ValidateCvc,
 } from './ValidateCreditCard'
-import { ICreditCard } from '../../types/Types'
+import { ICreditCard, IUser } from '../../types/Types'
+import UserContext from '../../contexts/UserContext'
 
 type RegisterCardFormProps = {
   onSubmitCallback: (creditCard: ICreditCard) => Promise<void>
@@ -25,6 +26,7 @@ type ErrorType = {
 const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
   onSubmitCallback,
 }: RegisterCardFormProps) => {
+  const user = useContext<IUser>(UserContext)
   const {
     handleChange: onCardNumberChange,
     value: cardNumber,
@@ -75,7 +77,7 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
         <Grid container item xs={12} sm={8} md={6} lg={4} xl={4}>
           <Grid item container justifyContent="start" spacing={2}>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              <Typography variant="h5">Welcome, William</Typography>
+              <Typography variant="h5">Welcome, {user.firstName}</Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               <CardNumberInput
