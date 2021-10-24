@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { TextField } from '@mui/material'
 import CvcFormat from './CvcFormat'
+import StyleContext from '../../../contexts/StyleContext'
+import { IStyle } from '../../../types/Types'
 
 type CvcInputProps = {
   error: boolean
@@ -15,6 +17,7 @@ const CvcInput: React.FC<CvcInputProps> = ({
   cvc,
   onCvcChange,
 }: CvcInputProps) => {
+  const { input } = useContext<IStyle>(StyleContext)
   return (
     <TextField
       required
@@ -27,11 +30,11 @@ const CvcInput: React.FC<CvcInputProps> = ({
       value={cvc}
       onChange={onCvcChange}
       InputProps={{
-        style: { fontSize: '1.2em' },
+        style: { fontSize: input.fontSize },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         inputComponent: CvcFormat as any,
       }}
-      variant="filled"
+      variant={input.variant}
     />
   )
 }

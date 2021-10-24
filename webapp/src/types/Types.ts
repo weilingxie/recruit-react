@@ -16,3 +16,10 @@ export interface IUser {
   firstName: string
   lastName: string
 }
+
+export interface IStyle {
+  input: {
+    fontSize: string
+    variant: 'standard' | 'filled' | 'outlined'
+  }
+}
