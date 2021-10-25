@@ -26,6 +26,14 @@ Builds the app for production to the `build` folder.\
 &nbsp;
 
 ## **Features**
+### - Screenshots
+1. Regiser card form page - invalid
+![RegisterCardForm Invalid](src/static/RegisterCardForm-Invalid.png)
+2. Regiser card form page - valid
+![RegisterCardForm Invalid](src/static/RegisterCardForm-Valid.png)
+3. Menu page - valid
+![RegisterCardForm Invalid](src/static/Menu.png)
+
 ### - Navigation
 - [x] Click on burger icon shows menu
 - [x] Click on back shows register card form 
