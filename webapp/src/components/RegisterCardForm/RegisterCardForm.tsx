@@ -102,23 +102,23 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
               spacing={2}
             >
               <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                <ExpiryDateInput
-                  onExpiryDateChange={onExpiryDateChange}
-                  expiryDate={expiryDate}
-                  error={getErrors().some((err) => err.name === 'expiryDate')}
-                  helperText={
-                    getErrors().find((err) => err.name === 'expiryDate')
-                      ?.errorMessage || ''
-                  }
-                />
-              </Grid>
-              <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                 <CvcInput
                   onCvcChange={onCvcChange}
                   cvc={cvc}
                   error={getErrors().some((err) => err.name === 'cvc')}
                   helperText={
                     getErrors().find((err) => err.name === 'cvc')
+                      ?.errorMessage || ''
+                  }
+                />
+              </Grid>
+              <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                <ExpiryDateInput
+                  onExpiryDateChange={onExpiryDateChange}
+                  expiryDate={expiryDate}
+                  error={getErrors().some((err) => err.name === 'expiryDate')}
+                  helperText={
+                    getErrors().find((err) => err.name === 'expiryDate')
                       ?.errorMessage || ''
                   }
                 />
