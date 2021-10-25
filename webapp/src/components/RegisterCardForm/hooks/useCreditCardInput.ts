@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 
-type Validator = (value: string) => string
+type Validator = (value: string) => boolean
 
 type Return = {
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   value: string
-  error: string
+  error: boolean
 }
 
 const useCreditCardInput = (validator: Validator): Return => {
   const [value, setValue] = useState<string>('')
-  const [error, setError] = useState<string>('')
+  const [error, setError] = useState<boolean>(false)
 
   useEffect(() => {
     setError(validator(value))
