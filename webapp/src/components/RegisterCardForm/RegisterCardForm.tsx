@@ -13,14 +13,10 @@ import {
 } from './CreditCardValidator'
 import { ICreditCard, IUser } from '../../types/Types'
 import UserContext from '../../contexts/UserContext'
+import { ErrorMessage } from '../../constants/CreditCardConstant'
 
 type RegisterCardFormProps = {
   onSubmitCallback: (creditCard: ICreditCard) => Promise<void>
-}
-
-type ErrorType = {
-  name: string
-  errorMessage: string
 }
 
 const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
@@ -45,21 +41,13 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
     error: cvcError,
   } = useCreditCardInput(CvcValidator)
 
-  const getErrors = (): ErrorType[] => {
-    const err: ErrorType[] = []
-    cardNumberError &&
-      err.push({ name: 'cardNumber', errorMessage: cardNumberError })
-    expiryDateError &&
-      err.push({ name: 'expiryDate', errorMessage: expiryDateError })
-    cvcError && err.push({ name: 'cvc', errorMessage: cvcError })
-    return err
-  }
+  const hasError = (): boolean => cardNumberError || expiryDateError || cvcError
 
   const onSubmit = async (
     event: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     event.preventDefault()
-    if (getErrors().length > 0) {
+    if (hasError()) {
       return
     }
     const creditCard: ICreditCard = {
@@ -83,11 +71,8 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
               <CardNumberInput
                 onCardNumberChange={onCardNumberChange}
                 cardNumber={cardNumber}
-                error={getErrors().some((err) => err.name === 'cardNumber')}
-                helperText={
-                  getErrors().find((err) => err.name === 'cardNumber')
-                    ?.errorMessage || ''
-                }
+                error={cardNumberError}
+                helperText={cardNumberError ? ErrorMessage.cardNumber : ''}
               />
             </Grid>
             <Grid
@@ -105,22 +90,16 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
                 <CvcInput
                   onCvcChange={onCvcChange}
                   cvc={cvc}
-                  error={getErrors().some((err) => err.name === 'cvc')}
-                  helperText={
-                    getErrors().find((err) => err.name === 'cvc')
-                      ?.errorMessage || ''
-                  }
+                  error={cvcError}
+                  helperText={cvcError ? ErrorMessage.cvc : ''}
                 />
               </Grid>
               <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                 <ExpiryDateInput
                   onExpiryDateChange={onExpiryDateChange}
                   expiryDate={expiryDate}
-                  error={getErrors().some((err) => err.name === 'expiryDate')}
-                  helperText={
-                    getErrors().find((err) => err.name === 'expiryDate')
-                      ?.errorMessage || ''
-                  }
+                  error={expiryDateError}
+                  helperText={expiryDateError ? ErrorMessage.expiryDate : ''}
                 />
               </Grid>
             </Grid>
@@ -141,7 +120,7 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
                   type="submit"
                   fullWidth={true}
                   size="medium"
-                  disabled={getErrors().length > 0}
+                  disabled={hasError()}
                   aria-label="submit button"
                 >
                   Submit

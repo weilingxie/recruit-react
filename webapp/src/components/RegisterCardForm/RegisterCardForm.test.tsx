@@ -1,6 +1,7 @@
 import { render, fireEvent, screen, waitFor } from '@testing-library/react'
 import { ICreditCard } from '../../types/Types'
 import RegisterCardForm from './RegisterCardForm'
+import { ErrorMessage } from '../../constants/CreditCardConstant'
 
 const onSubmitCallback = (creditCard: ICreditCard): Promise<void> => {
   console.log(creditCard)
@@ -51,7 +52,7 @@ describe('RegisterCardForm Tests', () => {
     )
     const cardNumberFormat = getByTestId('CardNumberFormat') as HTMLInputElement
     fireEvent.change(cardNumberFormat, { target: { value: invalidCardNumber } })
-    expect(screen.getByText('Credit card number is invalid')).toBeTruthy()
+    expect(screen.getByText(ErrorMessage.cardNumber)).toBeTruthy()
   })
 
   it('Should show error when provides invalid expiry date', () => {
@@ -60,7 +61,7 @@ describe('RegisterCardForm Tests', () => {
     )
     const expiryDateFormat = getByTestId('ExpiryDateFormat') as HTMLInputElement
     fireEvent.change(expiryDateFormat, { target: { value: invalidExpiryDate } })
-    expect(screen.getByText('Expiry date is invalid')).toBeTruthy()
+    expect(screen.getByText(ErrorMessage.expiryDate)).toBeTruthy()
   })
 
   it('Should show error when provides invalid cvc', () => {
@@ -69,7 +70,7 @@ describe('RegisterCardForm Tests', () => {
     )
     const cvcFormat = getByTestId('CvcFormat') as HTMLInputElement
     fireEvent.change(cvcFormat, { target: { value: invalidCvc } })
-    expect(screen.getByText('Cvc is invalid')).toBeTruthy()
+    expect(screen.getByText(ErrorMessage.cvc)).toBeTruthy()
   })
 
   it('Should disable submit button when there is any error', () => {
