@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-type Validate = (value: string) => string
+type Validator = (value: string) => string
 
 type Return = {
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -8,12 +8,12 @@ type Return = {
   error: string
 }
 
-const useCreditCardInput = (validate: Validate): Return => {
+const useCreditCardInput = (validator: Validator): Return => {
   const [value, setValue] = useState<string>('')
   const [error, setError] = useState<string>('')
 
   useEffect(() => {
-    setError(validate(value))
+    setError(validator(value))
   }, [value])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
