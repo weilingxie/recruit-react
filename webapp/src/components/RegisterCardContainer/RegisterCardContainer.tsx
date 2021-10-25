@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../Header/Header'
 import { useLocation } from 'react-router-dom'
 import { IComponentInfo } from '../../types/Types'
+import { getComponentInfoByPath } from '../../helpers/helper'
 
 type RegisterCardContainerProps = {
   componentInfoList: IComponentInfo[]
@@ -13,13 +14,6 @@ const RegisterCardContainer: React.FC<RegisterCardContainerProps> = ({
   children,
 }: RegisterCardContainerProps) => {
   const location = useLocation()
-  const getComponentInfoByPath = (
-    componentInfoList: IComponentInfo[],
-    path: string
-  ): IComponentInfo =>
-    componentInfoList.filter((c) => c.Path === path)[0] ||
-    componentInfoList.filter((c) => c.Default === true)[0]
-
   const { Title, HeaderMenuIcon, ToPath, HeaderButtonAriaLabel } =
     getComponentInfoByPath(componentInfoList, location.pathname)
 
