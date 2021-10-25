@@ -26,6 +26,7 @@ const CardNumberFormat = React.forwardRef<NumberFormat, CardNumberFormatProps>(
         format="#### #### #### ####"
         mask="_"
         aria-label="credit car number input field"
+        aria-required={true}
       />
     )
   }
