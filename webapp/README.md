@@ -56,6 +56,6 @@ Builds the app for production to the `build` folder.\
 - Material UI Grid
   
 ### - Accessibility
-- aria-label
+- WAI-ARIA (aria-label)
 - color contrast
 
