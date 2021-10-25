@@ -5,7 +5,7 @@ import { Typography } from '@mui/material'
 import CardNumberInput from './CardNumberInput/CardNumberInput'
 import ExpiryDateInput from './ExpiryDateInput/ExpiryDateInput'
 import CvcInput from './CvcInput/CvcInput'
-import useCreditCardInput from '../../hooks/useCreditCardInput'
+import useCreditCardInput from './hooks/useCreditCardInput'
 import {
   ValidateCardNumber,
   ValidateExpiryDate,
