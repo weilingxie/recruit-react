@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({
               flexGrow: 1,
               textAlign: 'center',
             }}
-            aria-label="header title"
+            aria-label={title}
           >
             {title}
           </Typography>
