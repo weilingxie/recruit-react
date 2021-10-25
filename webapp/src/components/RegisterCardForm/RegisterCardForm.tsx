@@ -142,6 +142,7 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
                   fullWidth={true}
                   size="medium"
                   disabled={getErrors().length > 0}
+                  aria-label="submit button"
                 >
                   Submit
                 </Button>
