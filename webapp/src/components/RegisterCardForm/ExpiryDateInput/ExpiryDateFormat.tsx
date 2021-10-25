@@ -27,6 +27,7 @@ const ExpiryDateFormat = React.forwardRef<NumberFormat, ExpiryDateFormatProps>(
         placeholder="MM/YY"
         mask={['M', 'M', 'Y', 'Y']}
         aria-label="Expiry date input field"
+        aria-required={true}
       />
     )
   }

@@ -26,6 +26,7 @@ const CvcFormat = React.forwardRef<NumberFormat, CvcFormatProps>(
         type="password"
         format="###"
         aria-label="Cvc number input field"
+        aria-required={true}
       />
     )
   }
