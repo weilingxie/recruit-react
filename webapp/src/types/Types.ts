@@ -9,6 +9,7 @@ export interface IComponentInfo {
   Title: string
   HeaderMenuIcon: React.ReactNode
   ToPath: string
+  HeaderButtonAriaLabel: string
   Default?: boolean
 }
 

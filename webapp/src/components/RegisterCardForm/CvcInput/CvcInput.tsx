@@ -23,7 +23,7 @@ const CvcInput: React.FC<CvcInputProps> = ({
       required
       fullWidth
       data-testid="CvcInput"
-      label="cvc"
+      label="Cvc"
       name="cvc"
       error={error}
       helperText={helperText}

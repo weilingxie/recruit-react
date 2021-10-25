@@ -6,7 +6,7 @@ import UserContext from './UserContext'
 const style: IStyle = {
   input: {
     fontSize: '1.2em',
-    variant: 'filled',
+    variant: 'standard',
   },
 }
 

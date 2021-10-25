@@ -6,15 +6,17 @@ const ComponentInfoList: IComponentInfo[] = [
   {
     Path: '/Menu',
     Title: 'Menu',
-    HeaderMenuIcon: <MenuIcon fontSize="large" />,
+    HeaderMenuIcon: <ArrowBack fontSize="large" />,
     ToPath: '/RegisterCardForm',
+    HeaderButtonAriaLabel: 'go back to card register form',
     Default: true,
   },
   {
     Path: '/RegisterCardForm',
     Title: 'Register card form',
-    HeaderMenuIcon: <ArrowBack fontSize="large" />,
+    HeaderMenuIcon: <MenuIcon fontSize="large" />,
     ToPath: '/Menu',
+    HeaderButtonAriaLabel: 'open menu',
   },
 ]
 
