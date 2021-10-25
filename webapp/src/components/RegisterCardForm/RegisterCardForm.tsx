@@ -7,10 +7,10 @@ import ExpiryDateInput from './ExpiryDateInput/ExpiryDateInput'
 import CvcInput from './CvcInput/CvcInput'
 import useCreditCardInput from './hooks/useCreditCardInput'
 import {
-  ValidateCardNumber,
-  ValidateExpiryDate,
-  ValidateCvc,
-} from './ValidateCreditCard'
+  CardNumberValidator,
+  ExpiryDateValidator,
+  CvcValidator,
+} from './CreditCardValidator'
 import { ICreditCard, IUser } from '../../types/Types'
 import UserContext from '../../contexts/UserContext'
 
@@ -31,19 +31,19 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
     handleChange: onCardNumberChange,
     value: cardNumber,
     error: cardNumberError,
-  } = useCreditCardInput(ValidateCardNumber)
+  } = useCreditCardInput(CardNumberValidator)
 
   const {
     handleChange: onExpiryDateChange,
     value: expiryDate,
     error: expiryDateError,
-  } = useCreditCardInput(ValidateExpiryDate)
+  } = useCreditCardInput(ExpiryDateValidator)
 
   const {
     handleChange: onCvcChange,
     value: cvc,
     error: cvcError,
-  } = useCreditCardInput(ValidateCvc)
+  } = useCreditCardInput(CvcValidator)
 
   const getErrors = (): ErrorType[] => {
     const err: ErrorType[] = []
