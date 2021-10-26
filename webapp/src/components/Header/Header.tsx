@@ -8,14 +8,14 @@ import { useHistory } from 'react-router-dom'
 export type HeaderProps = {
   title: string
   toPath: string
-  HeaderButtonAriaLabel: string
+  headerButtonAriaLabel: string
   headerIcon: React.ReactNode
 }
 
 const Header: React.FC<HeaderProps> = ({
   title = 'Register Card Form',
   toPath = '/',
-  HeaderButtonAriaLabel = 'header button',
+  headerButtonAriaLabel = 'header button',
   headerIcon,
 }: HeaderProps) => {
   const history = useHistory()
@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({
           <IconButton
             color="inherit"
             onClick={onClickHeaderButton}
-            aria-label={HeaderButtonAriaLabel}
+            aria-label={headerButtonAriaLabel}
           >
             {headerIcon}
           </IconButton>

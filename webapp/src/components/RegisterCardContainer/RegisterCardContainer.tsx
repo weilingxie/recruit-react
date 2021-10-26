@@ -23,7 +23,7 @@ const RegisterCardContainer: React.FC<RegisterCardContainerProps> = ({
         title={Title}
         headerIcon={HeaderMenuIcon}
         toPath={ToPath}
-        HeaderButtonAriaLabel={HeaderButtonAriaLabel}
+        headerButtonAriaLabel={HeaderButtonAriaLabel}
       />
       {children}
     </>

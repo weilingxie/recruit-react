@@ -3,16 +3,22 @@ import Header from './Header'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
 
-const title = 'TestTitle'
-const headerIcon = <div data-testid="testHeaderIcon"></div>
-const toPath = '/'
+const Title = 'TestTitle'
+const HeaderIcon = <div data-testid="testHeaderIcon"></div>
+const ToPath = '/'
+const HeaderButtonAriaLabel = 'header button'
 
 describe('Header Tests', () => {
   it('Should render title and icon', () => {
     const { getByTestId } = render(
-      <Header title={title} headerIcon={headerIcon} toPath={toPath} />
+      <Header
+        title={Title}
+        headerIcon={HeaderIcon}
+        toPath={ToPath}
+        headerButtonAriaLabel={HeaderButtonAriaLabel}
+      />
     )
-    expect(screen.getByText(title)).toBeTruthy()
+    expect(screen.getByText(Title)).toBeTruthy()
     expect(getByTestId('testHeaderIcon')).toBeTruthy()
   })
 
@@ -20,11 +26,16 @@ describe('Header Tests', () => {
     const history = createMemoryHistory()
     const { getByRole } = render(
       <Router history={history}>
-        <Header title={title} headerIcon={headerIcon} toPath={toPath} />
+        <Header
+          title={Title}
+          headerIcon={HeaderIcon}
+          toPath={ToPath}
+          headerButtonAriaLabel={HeaderButtonAriaLabel}
+        />
       </Router>
     )
     fireEvent.click(getByRole('button'))
 
-    expect(window.location.pathname).toEqual(toPath)
+    expect(window.location.pathname).toEqual(ToPath)
   })
 })
