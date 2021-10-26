@@ -13,7 +13,7 @@ const useCreditCardInput = (validator: Validator): Return => {
   const [error, setError] = useState<boolean>(false)
 
   useEffect(() => {
-    setError(validator(value))
+    setError(!validator(value))
   }, [value])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {

@@ -11,7 +11,7 @@ const WrongTypeCardNumber = 'abcdef'
 const WrongTypeExpiryDate = 'abcd'
 const WrongTypeCvc = 'abc'
 const ValidCardNumber = '1234567890123456'
-const ValidExpiryDate = '1221'
+const ValidExpiryDate = '1221' // 12/21 = December 2021
 const ValidCvc = '123'
 
 describe('RegisterCardForm Tests', () => {

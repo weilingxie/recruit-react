@@ -1,31 +1,27 @@
 import { renderHook, act } from '@testing-library/react-hooks'
 import useCreditCardInput from './useCreditCardInput'
 
-const toValue = '000'
-const invalidValue = 'invalid'
-const errorMessage = 'Error Message'
-const validateNoError = (value: string): string => ''
-const validatehasError = (value: string): string => errorMessage
-const validateShowErrorWhenInvalid = (value: string): string =>
-  value === invalidValue ? errorMessage : ''
+const ToValue = '000'
+const validateNoError = (value: string): boolean => true
+const validatehasError = (value: string): boolean => false
 
 describe('useCreditCardInput Tests', () => {
   it('Should initial the value and error properly', () => {
     const { result } = renderHook(() => useCreditCardInput(validateNoError))
     expect(result.current.value).toBe('')
-    expect(result.current.error).toBe('')
+    expect(result.current.error).toBeFalsy()
   })
 
-  it('Should set error properly when returns errorMessage from validate', () => {
+  it('Should set error to true when returns false from validator', () => {
     const { result } = renderHook(() => useCreditCardInput(validatehasError))
-    expect(result.current.error).toBe(errorMessage)
+    expect(result.current.error).toBeTruthy()
   })
 
   it('Should change value by calling handleChange', () => {
     const { result } = renderHook(() => useCreditCardInput(validateNoError))
     const event = {
       target: {
-        value: toValue,
+        value: ToValue,
       },
     } as React.ChangeEvent<HTMLInputElement>
 
@@ -33,25 +29,6 @@ describe('useCreditCardInput Tests', () => {
       result.current.handleChange(event)
     })
 
-    expect(result.current.value).toBe(toValue)
-  })
-
-  it('Should change error when change value to invalid', () => {
-    const { result } = renderHook(() =>
-      useCreditCardInput(validateShowErrorWhenInvalid)
-    )
-    const event = {
-      target: {
-        value: invalidValue,
-      },
-    } as React.ChangeEvent<HTMLInputElement>
-
-    expect(result.current.error).toBe('')
-
-    act(() => {
-      result.current.handleChange(event)
-    })
-
-    expect(result.current.error).toBe(errorMessage)
+    expect(result.current.value).toBe(ToValue)
   })
 })
