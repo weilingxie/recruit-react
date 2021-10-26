@@ -19,9 +19,8 @@ const Menu: React.FC = () => {
           direction="row"
           justifyContent="center"
           alignItems="center"
-          sx={{ height: '100%' }}
         >
-          <Typography variant="h5" sx={{ height: '100%', textAlign: 'center' }}>
+          <Typography variant="h5" sx={{ textAlign: 'center' }}>
             {MenuTextContent}
           </Typography>
         </Grid>
