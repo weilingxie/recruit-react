@@ -28,22 +28,25 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
   const {
     handleChange: onCardNumberChange,
     value: cardNumber,
-    error: cardNumberError,
+    error: hasCardNumberError,
   } = useCreditCardInput(CardNumberValidator)
 
   const {
     handleChange: onExpiryDateChange,
     value: expiryDate,
-    error: expiryDateError,
+    error: hasExpiryDateError,
   } = useCreditCardInput(ExpiryDateValidator)
 
   const {
     handleChange: onCvcChange,
     value: cvc,
-    error: cvcError,
+    error: hasCvcError,
   } = useCreditCardInput(CvcValidator)
 
-  const hasError = (): boolean => cardNumberError || expiryDateError || cvcError
+  const hasError = (): boolean =>
+    hasCardNumberError || hasExpiryDateError || hasCvcError
+  const isEmpty = (): boolean =>
+    cardNumber === '' && expiryDate === '' && cvc === ''
 
   const onSubmit = async (
     event: React.FormEvent<HTMLFormElement>
@@ -73,8 +76,8 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
               <CardNumberInput
                 onCardNumberChange={onCardNumberChange}
                 cardNumber={cardNumber}
-                error={cardNumberError}
-                helperText={cardNumberError ? ErrorMessage.cardNumber : ''}
+                error={cardNumber !== '' && hasCardNumberError}
+                helperText={hasCardNumberError ? ErrorMessage.cardNumber : ''}
               />
             </Grid>
             <Grid
@@ -92,16 +95,16 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
                 <CvcInput
                   onCvcChange={onCvcChange}
                   cvc={cvc}
-                  error={cvcError}
-                  helperText={cvcError ? ErrorMessage.cvc : ''}
+                  error={cvc !== '' && hasCvcError}
+                  helperText={hasCvcError ? ErrorMessage.cvc : ''}
                 />
               </Grid>
               <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                 <ExpiryDateInput
                   onExpiryDateChange={onExpiryDateChange}
                   expiryDate={expiryDate}
-                  error={expiryDateError}
-                  helperText={expiryDateError ? ErrorMessage.expiryDate : ''}
+                  error={expiryDate !== '' && hasExpiryDateError}
+                  helperText={hasExpiryDateError ? ErrorMessage.expiryDate : ''}
                 />
               </Grid>
             </Grid>
@@ -123,7 +126,7 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
                   type="submit"
                   fullWidth={true}
                   size="medium"
-                  disabled={hasError()}
+                  disabled={isEmpty()}
                   aria-label="submit button"
                 >
                   Submit
