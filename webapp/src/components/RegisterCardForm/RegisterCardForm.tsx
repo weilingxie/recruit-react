@@ -117,6 +117,7 @@ const RegisterCardForm: React.FC<RegisterCardFormProps> = ({
             >
               <Grid item xs={12}>
                 <Button
+                  id="SubmitButton"
                   variant="contained"
                   color="success"
                   type="submit"
