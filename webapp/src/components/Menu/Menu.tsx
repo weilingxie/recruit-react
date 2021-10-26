@@ -11,6 +11,7 @@ const Menu: React.FC = () => {
       <Card
         sx={{
           padding: '10px',
+          boxShadow: 0,
         }}
       >
         <Grid
