@@ -22,5 +22,6 @@ export interface IStyle {
   input: {
     fontSize: string
     variant: 'standard' | 'filled' | 'outlined'
+    spacing: number
   }
 }
