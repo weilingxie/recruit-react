@@ -12,6 +12,9 @@ const onSubmitCallback = (creditCard: ICreditCard): Promise<void> => {
 const invalidCardNumber = '123456'
 const invalidExpiryDate = '9921'
 const invalidCvc = '12'
+const wrongTypeCardNumber = 'abcdef'
+const wrongTypeExpiryDate = 'abcd'
+const wrongTypeCvc = 'abc'
 const validCardNumber = '1234567890123456'
 const validExpiryDate = '1221'
 const validCvc = '123'
@@ -95,5 +98,38 @@ describe('RegisterCardForm Tests', () => {
     fireEvent.change(cvcFormat, { target: { value: validCvc } })
     const submitButton = getByRole('button')
     expect(submitButton).toBeEnabled
+  })
+
+  it('Should not accept non-numeric value in card number input field', () => {
+    const { getByTestId } = render(
+      <RegisterCardForm onSubmitCallback={onSubmitCallback} />
+    )
+    const cardNumberFormat = getByTestId('CardNumberFormat') as HTMLInputElement
+    fireEvent.change(cardNumberFormat, {
+      target: { value: wrongTypeCardNumber },
+    })
+    expect(cardNumberFormat.value).toBe('')
+  })
+
+  it('Should not accept non-numeric value in expiry date input field', () => {
+    const { getByTestId } = render(
+      <RegisterCardForm onSubmitCallback={onSubmitCallback} />
+    )
+    const expiryDateFormat = getByTestId('ExpiryDateFormat') as HTMLInputElement
+    fireEvent.change(expiryDateFormat, {
+      target: { value: wrongTypeExpiryDate },
+    })
+    expect(expiryDateFormat.value).toBe('')
+  })
+
+  it('Should not accept non-numeric value in cvc input field', () => {
+    const { getByTestId } = render(
+      <RegisterCardForm onSubmitCallback={onSubmitCallback} />
+    )
+    const cvcFormat = getByTestId('CvcFormat') as HTMLInputElement
+    fireEvent.change(cvcFormat, {
+      target: { value: wrongTypeCvc },
+    })
+    expect(cvcFormat.value).toBe('')
   })
 })
