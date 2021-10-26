@@ -7,6 +7,7 @@ const style: IStyle = {
   input: {
     fontSize: '1.2em',
     variant: 'standard',
+    spacing: 2,
   },
 }
 

@@ -5,6 +5,7 @@ const DefaultStyle: IStyle = {
   input: {
     fontSize: '1.2em',
     variant: 'filled',
+    spacing: 2,
   },
 }
 
