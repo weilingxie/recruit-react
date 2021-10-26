@@ -5,8 +5,10 @@
 
 ### - Startup the app locally
 
-In the project directory **webapp**, run:
+In the project directory **webapp**, run:\
+`yarn`
 
+Installs all dependencies.\
 `yarn start`
 
 Runs the app in the development mode.\
